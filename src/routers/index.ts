@@ -1,21 +1,17 @@
 import express, { Router, Request, Response } from 'express';
+import controller from '../controllers';
 
 const router: Router = express.Router();
 
-router.post('/register', (req: Request, res: Response) => {
-  res.send('Hello, world!');
-});
+// get le restaurant en fonction de plusieurs param envoyé dans le body
+router.post('/getRestaurant', controller.getRestaurant); 
 
-router.post('/login', (req: Request, res: Response) => {
-  res.json('login');
-});
+router.post('/createRestaurant', controller.createRestaurant);
 
-router.delete('/delete/{id}', (req: Request, res: Response) => {
-  res.json('delete');
-});
+router.post('/updateRestaurant/{idRestaurant}', controller.updateRestaurant);
 
-router.put('/edit/{id}', (req: Request, res: Response) => {
-  res.json('edit');
-});
+router.delete('/deleteRestaurant/{idRestaurant}', controller.deleteRestaurant);
+
+router.get('/getAllRestaurant', controller.getAllRestaurant);
 
 export default router;

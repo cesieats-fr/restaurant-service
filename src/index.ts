@@ -6,7 +6,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.get('/', (req: Request, res: Response) => {
-  res.send('Bienvenue sur l api de CesiEats ! Je suis Keanu Nicolas Harrell !');
+  res.send('restaurant-service running');
 });
 
 app.use('/', router);

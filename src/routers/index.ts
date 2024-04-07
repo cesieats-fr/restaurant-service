@@ -7,13 +7,13 @@ const router: Router = express.Router();
 router.post('/addRestaurant', controller.addRestaurant);
 
 // Modifie un restaurant
-router.post('/updateRestaurant', controller.updateRestaurant);
+router.post('/editRestaurant', controller.editRestaurant);
 
 // Retourne un restaurant
 router.get('/getRestaurant/:id', controller.getRestaurant); 
 
 // Retourne tous les restaurants grâce à des filtres [title, description, closingTime, openingTime, deliveryPrice, telephone]
-router.get('/getAllRestaurant', controller.getAllRestaurant);
+router.get('/getAllRestaurants', controller.getAllRestaurants);
 
 // Supprime un restaurant
 router.delete('/deleteRestaurant', controller.deleteRestaurant);

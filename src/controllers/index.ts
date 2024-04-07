@@ -25,7 +25,7 @@ const addRestaurant = async (req: Request, res: Response) => {
 };
 
 // Modifie un restaurant
-const updateRestaurant = async (req: Request, res: Response) => {
+const editRestaurant = async (req: Request, res: Response) => {
   try {
     const update = { 
       title: req.body.address,
@@ -41,7 +41,7 @@ const updateRestaurant = async (req: Request, res: Response) => {
     console.log('result after update: ' + result);
     res.status(200).json(result);
   }  catch (error) {
-    console.log('[RESTAURANT-SERVICE] updateRestaurant error: ' + error);
+    console.log('[RESTAURANT-SERVICE] editRestaurant error: ' + error);
     res.status(400).json({message: 'an unexpected error occurred'});
   }
 };
@@ -60,7 +60,7 @@ const getRestaurant = async (req: Request, res: Response) => {
 };
 
 // Retourne tous les restaurants grâce à des filtres [title, description, closingTime, openingTime, deliveryPrice, telephone]
-const getAllRestaurant = async (req: Request, res: Response) => {
+const getAllRestaurants = async (req: Request, res: Response) => {
   try {
     const filter = {
       title: (String)(req.query.title),
@@ -76,7 +76,7 @@ const getAllRestaurant = async (req: Request, res: Response) => {
     console.log('result: ' + result);
     res.status(200).json(result);
   } catch (error) {
-    console.log('[RESTAURANT-SERVICE] getAllRestaurant error: ' + error);
+    console.log('[RESTAURANT-SERVICE] getAllRestaurants error: ' + error);
     res.status(400).json({message: 'an unexpected error occurred'});
   }
 };
@@ -96,9 +96,9 @@ const deleteRestaurant = async (req: Request, res: Response) => {
 
 const controller = {
   addRestaurant,
-  updateRestaurant,
+  editRestaurant,
   getRestaurant,
-  getAllRestaurant,
+  getAllRestaurants,
   deleteRestaurant,
 };
 

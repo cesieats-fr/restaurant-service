@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { IRestaurant } from 'cesieats-service-types/src/restaurant';
 import { Restaurant } from '../database';
 
+// Ajoute/créer un restaurant
 const addRestaurant = async (req: Request, res: Response) => {
   try{
     const restaurant: IRestaurant = {
@@ -23,6 +24,7 @@ const addRestaurant = async (req: Request, res: Response) => {
   }
 };
 
+// Modifie un restaurant
 const updateRestaurant = async (req: Request, res: Response) => {
   try {
     const update = { 
@@ -44,6 +46,7 @@ const updateRestaurant = async (req: Request, res: Response) => {
   }
 };
 
+// Retourne un restaurant
 const getRestaurant = async (req: Request, res: Response) => {
   try {
     const result = await Restaurant.findById(req.params.id);
@@ -56,6 +59,7 @@ const getRestaurant = async (req: Request, res: Response) => {
   }
 };
 
+// Retourne tous les restaurants grâce à des filtres [title, description, closingTime, openingTime, deliveryPrice, telephone]
 const getAllRestaurant = async (req: Request, res: Response) => {
   try {
     const filter = {
@@ -77,6 +81,7 @@ const getAllRestaurant = async (req: Request, res: Response) => {
   }
 };
 
+// Supprime un restaurant
 const deleteRestaurant = async (req: Request, res: Response) => {
   try {
     const result = await Restaurant.findByIdAndDelete(req.body.id);

@@ -1,4 +1,4 @@
-import express, { Router, Request, Response } from 'express';
+import express, { Router } from 'express';
 import controller from '../controllers';
 
 const router: Router = express.Router();
@@ -10,7 +10,7 @@ router.post('/addRestaurant', controller.addRestaurant);
 router.post('/editRestaurant', controller.editRestaurant);
 
 // Retourne un restaurant
-router.get('/getRestaurant/:id', controller.getRestaurant); 
+router.get('/getRestaurant/:id', controller.getRestaurant);
 
 // Retourne tous les restaurants grâce à des filtres [title, description, closingTime, openingTime, deliveryPrice, telephone]
 router.get('/getAllRestaurants', controller.getAllRestaurants);

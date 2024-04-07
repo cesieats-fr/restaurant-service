@@ -1,13 +1,17 @@
-// import { Schema, model } from 'mongoose';
+import { IRestaurant } from 'cesieats-service-types/src/restaurant';
+import mongoose, { Schema, model } from 'mongoose';
 
-// export const accountSchema = new Schema<IAccount>({
-//   id: { type: Number, required: true },
-//   email: { type: String, required: true },
-//   password: { type: String, required: true },
-// });
+const restaurantSchema = new Schema<IRestaurant>({
+  title: { type: String, required: true },
+  description: { type: String, required: true },
+  address: { type: String, required: true },
+  openingTime: { type: Number, required: true },
+  closingTime: { type: Number, required: true },
+  deliveryPrice: { type: Number, required: true },
+  telephone: { type: Number, required: true },
+});
 
-// export const Account = model<IAccount>('Account', accountSchema);
-import mongoose from 'mongoose';
+export const Restaurant = model<IRestaurant>('Restaurant', restaurantSchema);
 
 export const connectMongoose = () => {
   mongoose

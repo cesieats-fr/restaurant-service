@@ -3,15 +3,14 @@ import controller from '../controllers';
 
 const router: Router = express.Router();
 
-// get le restaurant en fonction de plusieurs param envoyé dans le body
-router.post('/getRestaurant', controller.getRestaurant); 
+router.post('/addRestaurant', controller.addRestaurant);
 
-router.post('/createRestaurant', controller.createRestaurant);
+router.post('/updateRestaurant', controller.updateRestaurant);
 
-router.post('/updateRestaurant/{idRestaurant}', controller.updateRestaurant);
-
-router.delete('/deleteRestaurant/{idRestaurant}', controller.deleteRestaurant);
+router.get('/getRestaurant/:id', controller.getRestaurant); 
 
 router.get('/getAllRestaurant', controller.getAllRestaurant);
+
+router.delete('/deleteRestaurant', controller.deleteRestaurant);
 
 export default router;

@@ -15,11 +15,8 @@ const addRestaurant = async (req: Request, res: Response) => {
       telephone: req.body.telephone,
     };
     const result = await Restaurant.create(restaurant);
-    console.log('restaurant: ' + restaurant);
-    console.log('result: ' + result);
     res.status(200).json(result);
   } catch (error) {
-    console.log('[RESTAURANT-SERVICE] addRestaurant error: ' + error);
     res.status(400).json({ message: 'an unexpected error occurred' });
   }
 };
@@ -37,24 +34,18 @@ const editRestaurant = async (req: Request, res: Response) => {
       telephone: req.body.telephone,
     };
     const result = await Restaurant.findByIdAndUpdate(req.body.id, update);
-    console.log('update: ' + update);
-    console.log('result after update: ' + result);
     res.status(200).json(result);
   } catch (error) {
-    console.log('[RESTAURANT-SERVICE] editRestaurant error: ' + error);
     res.status(400).json({ message: 'an unexpected error occurred' });
   }
 };
 
 // Retourne un restaurant
-const getRestaurant = async (req: Request, res: Response) => {
+const getRestaurantByAccountId = async (req: Request, res: Response) => {
   try {
-    const result = await Restaurant.findById(req.params.id);
-    console.log('id: ' + req.params.id);
-    console.log('result: ' + result);
+    const result = await Restaurant.findById({ idClient: res.locals.account._id });
     res.status(200).json(result);
   } catch (error) {
-    console.log('[RESTAURANT-SERVICE] getRestaurant error: ' + error);
     res.status(400).json({ message: 'an unexpected error occurred' });
   }
 };
@@ -72,11 +63,8 @@ const getAllRestaurants = async (req: Request, res: Response) => {
       telephone: req.query.telephone,
     };
     const result = await Restaurant.find(filter);
-    console.log('filter: ' + filter);
-    console.log('result: ' + result);
     res.status(200).json(result);
   } catch (error) {
-    console.log('[RESTAURANT-SERVICE] getAllRestaurants error: ' + error);
     res.status(400).json({ message: 'an unexpected error occurred' });
   }
 };
@@ -85,11 +73,8 @@ const getAllRestaurants = async (req: Request, res: Response) => {
 const deleteRestaurant = async (req: Request, res: Response) => {
   try {
     const result = await Restaurant.findByIdAndDelete(req.body.id);
-    console.log('id: ' + req.body.id);
-    console.log('result: ' + result);
     res.status(200).json(result);
   } catch (error) {
-    console.log('[RESTAURANT-SERVICE] deleteRestaurant error: ' + error);
     res.status(400).json({ message: 'an unexpected error occurred' });
   }
 };
@@ -97,7 +82,7 @@ const deleteRestaurant = async (req: Request, res: Response) => {
 const controller = {
   addRestaurant,
   editRestaurant,
-  getRestaurant,
+  getRestaurantByAccountId,
   getAllRestaurants,
   deleteRestaurant,
 };

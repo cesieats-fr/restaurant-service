@@ -10,7 +10,7 @@ router.post('/addRestaurant', controller.addRestaurant);
 router.post('/editRestaurant', controller.editRestaurant);
 
 // Retourne un restaurant
-router.get('/getRestaurant/:id', controller.getRestaurant);
+router.get('/getRestaurantByAccountId', controller.getRestaurantByAccountId);
 
 // Retourne tous les restaurants grâce à des filtres [title, description, closingTime, openingTime, deliveryPrice, telephone]
 router.get('/getAllRestaurants', controller.getAllRestaurants);

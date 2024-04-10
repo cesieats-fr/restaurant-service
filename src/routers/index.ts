@@ -10,7 +10,7 @@ router.use(middleware);
 router.post('/addRestaurant', controller.addRestaurant);
 
 // Modifie un restaurant
-router.post('/editRestaurant', controller.editRestaurant);
+router.put('/editRestaurant', controller.editRestaurant);
 
 // Retourne un restaurant
 router.get('/getRestaurantByAccountId', controller.getRestaurantByAccountId);

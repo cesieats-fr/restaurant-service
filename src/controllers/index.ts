@@ -34,7 +34,7 @@ const editRestaurant = async (req: Request, res: Response) => {
       deliveryPrice: req.body.deliveryPrice,
       telephone: req.body.telephone,
     };
-    const result = await Restaurant.findOneAndUpdate({ idAccount: res.locals.account._id }, update);
+    const result = await Restaurant.findOneAndUpdate({ idAccount: res.locals.account._id }, update, { new: true });
     res.status(200).json(result);
   } catch (error) {
     res.status(400).json({ message: 'an unexpected error occurred' });

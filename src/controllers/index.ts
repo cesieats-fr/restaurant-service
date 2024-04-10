@@ -44,7 +44,7 @@ const editRestaurant = async (req: Request, res: Response) => {
 // Retourne un restaurant
 const getRestaurantByAccountId = async (req: Request, res: Response) => {
   try {
-    const result = await Restaurant.find({ idClient: res.locals.account._id }).exec();
+    const result = await Restaurant.findOne({ idClient: res.locals.account._id }).exec();
     res.status(200).json(result);
   } catch (error) {
     res.status(400).json({ message: 'an unexpected error occurred' });

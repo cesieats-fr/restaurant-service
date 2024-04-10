@@ -1,7 +1,10 @@
 import express, { Router } from 'express';
 import controller from '../controllers';
+import { middleware } from '../middlewares';
 
 const router: Router = express.Router();
+
+router.use(middleware);
 
 // Ajoute/créer un restaurant
 router.post('/addRestaurant', controller.addRestaurant);

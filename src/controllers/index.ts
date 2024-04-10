@@ -6,13 +6,14 @@ import { Restaurant } from '../database';
 const addRestaurant = async (req: Request, res: Response) => {
   try {
     const restaurant: IRestaurant = {
-      title: req.body.address,
+      name: req.body.name,
       description: req.body.description,
       address: req.body.address,
       closingTime: req.body.closingTime,
       openingTime: req.body.openingTime,
       deliveryPrice: req.body.deliveryPrice,
       telephone: req.body.telephone,
+      idAccount: res.locals.account._id,
     };
     const result = await Restaurant.create(restaurant);
     res.status(200).json(result);
@@ -53,16 +54,7 @@ const getRestaurantByAccountId = async (req: Request, res: Response) => {
 // Retourne tous les restaurants grâce à des filtres [title, description, closingTime, openingTime, deliveryPrice, telephone]
 const getAllRestaurants = async (req: Request, res: Response) => {
   try {
-    const filter = {
-      title: String(req.query.title),
-      description: String(req.query.description),
-      address: String(req.query.address),
-      closingTime: req.query.closingTime,
-      openingTime: req.query.openingTime,
-      deliveryPrice: req.query.deliveryPrice,
-      telephone: req.query.telephone,
-    };
-    const result = await Restaurant.find(filter);
+    const result = await Restaurant.find().exec();
     res.status(200).json(result);
   } catch (error) {
     res.status(400).json({ message: 'an unexpected error occurred' });

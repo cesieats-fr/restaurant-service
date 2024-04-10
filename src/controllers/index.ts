@@ -25,8 +25,8 @@ const addRestaurant = async (req: Request, res: Response) => {
 // Modifie un restaurant
 const editRestaurant = async (req: Request, res: Response) => {
   try {
-    const update = {
-      title: req.body.address,
+    const update: IRestaurant = {
+      name: req.body.name,
       description: req.body.description,
       address: req.body.address,
       closingTime: req.body.closingTime,
